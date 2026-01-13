@@ -64,35 +64,31 @@
         </main>
     </div>
 
-<script>
-    function logout() {
-        localStorage.clear();
-        window.location.href = 'index.html';
-    }
+    <script>
+        // 1. Update Profile Display logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // This retrieves the name you saved during login. 
+            // Ensure you used 'username' as the key in your login script.
+            const savedUsername = localStorage.getItem('username'); 
 
-    // This runs as soon as the page is ready
-    document.addEventListener('DOMContentLoaded', () => {
-        // CHANGE 'username' to the exact key you see in your Local Storage
-        const savedUsername = localStorage.getItem('username'); 
+            if (savedUsername) {
+                const nameElement = document.getElementById('display-username');
+                const initialElement = document.getElementById('user-initial');
 
-        const nameElement = document.getElementById('display-username');
-        const initialElement = document.getElementById('user-initial');
+                // Update the text to the real username
+                nameElement.textContent = savedUsername;
 
-        if (savedUsername && savedUsername !== "null") {
-            // Update the name
-            nameElement.textContent = savedUsername;
-            
-            // Update the initial (take first letter and make it uppercase)
-            initialElement.textContent = savedUsername.charAt(0).toUpperCase();
-            
-            console.log("Username updated to:", savedUsername);
-        } else {
-            console.warn("No username found in localStorage. Keeping default.");
+                // Update the avatar initial to the first letter (Uppercase)
+                initialElement.textContent = savedUsername.charAt(0).toUpperCase();
+            }
+        });
+
+        // 2. Logout logic
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
         }
-    });
-</script>
+    </script>
     <script type="module" src="drone3d.js"></script>
 </body>
-
 </html>
-
