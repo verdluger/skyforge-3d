@@ -64,24 +64,35 @@
         </main>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const savedUsername = localStorage.getItem('username'); 
-
-    if (savedUsername) {
-        const displayUser = document.getElementById('display-username');
-        displayUser.textContent = savedUsername;
-
-        const displayInitial = document.getElementById('user-initial');
-        displayInitial.textContent = savedUsername.charAt(0).toUpperCase();
+<script>
+    function logout() {
+        localStorage.clear();
+        window.location.href = 'index.html';
     }
-});
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
+
+    // This runs as soon as the page is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        // CHANGE 'username' to the exact key you see in your Local Storage
+        const savedUsername = localStorage.getItem('username'); 
+
+        const nameElement = document.getElementById('display-username');
+        const initialElement = document.getElementById('user-initial');
+
+        if (savedUsername && savedUsername !== "null") {
+            // Update the name
+            nameElement.textContent = savedUsername;
+            
+            // Update the initial (take first letter and make it uppercase)
+            initialElement.textContent = savedUsername.charAt(0).toUpperCase();
+            
+            console.log("Username updated to:", savedUsername);
+        } else {
+            console.warn("No username found in localStorage. Keeping default.");
         }
-    </script>
+    });
+</script>
     <script type="module" src="drone3d.js"></script>
 </body>
 
 </html>
+
