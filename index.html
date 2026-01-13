@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyForge | Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" type="image/x-icon" href="tau.png">
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Shared button size logic */
+        .modal-btn {
+            flex: 1;
+            padding: 12px 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+        }
+
+        /* Teal for Send Link */
+        .btn-primary {
+            background-color: #00f0ff !important;
+            color: #000 !important;
+        }
+
+        /* Dark for Cancel */
+        .btn-secondary {
+            background: #1a1a1a !important;
+            border: 1px solid #444 !important;
+            color: #fff !important;
+        }
+
+        .btn-secondary:hover {
+            border-color: #00f0ff !important;
+            color: #00f0ff !important;
+        }
+    </style>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-header">
+            <h1 class="logo">SkyForge<span style="color:#00f0ff">3D</span></h1>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <label>USERNAME</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="input-group">
+                <label>PASSWORD</label>
+                <input type="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+
+        <div class="login-footer">
+            <a href="javascript:void(0)" class="forgot-link" onclick="openForgotModal()">Forgot Password?</a>
+        </div>
+    </div>
+
+    <div id="forgot-modal" class="modal-overlay" style="display:none;">
+        <div class="checkout-box" style="max-width: 400px; padding: 40px; background: #111;">
+            <h2 class="category-title" style="margin-top:0; border-left: 3px solid #00f0ff; padding-left: 15px;">RESET PASSWORD</h2>
+            <p style="color:#888; font-size:0.9rem; margin-bottom:20px;">
+                Enter your email and we'll send you instructions to reset your password.
+            </p>
+            <div class="input-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" id="reset-email" placeholder="email@example.com">
+            </div>
+            
+            <div style="display:flex; gap:12px; margin-top:20px;">
+                <button class="modal-btn btn-primary" onclick="handleReset()">Send Link</button>
+                <button class="modal-btn btn-secondary" onclick="closeForgotModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // HANDLE LOGIN
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            localStorage.setItem('savedUsername', user);
+            window.location.href = 'marketplace.html';
+        });
+
+        // MODAL FUNCTIONS
+        function openForgotModal() {
+            document.getElementById('forgot-modal').style.display = 'flex';
+        }
+
+        function closeForgotModal() {
+            document.getElementById('forgot-modal').style.display = 'none';
+        }
+
+        function handleReset() {
+            const email = document.getElementById('reset-email').value;
+            if (!email || !email.includes('@')) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            alert(`A reset link has been sent to ${email}`);
+            closeForgotModal();
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('forgot-modal');
+            if (e.target == modal) closeForgotModal();
+        }
+
+        // On Login Page
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    
+    // Save to storage
+    localStorage.setItem('savedUsername', user);
+    
+    // THEN redirect
+    window.location.href = 'marketplace.html';
+});
+    </script> 
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyForge | Marketplace</title>
+    <link rel="stylesheet" href="marketplace.css">
+    <link rel="icon" type="image/x-icon" href="tau.png">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="nav-content-main">
+                <div class="nav-group-left">
+                    <button class="icon-btn" onclick="toggleSidebar('left-sidebar')">☰</button>
+                    <h1 class="logo">SkyForge<span style="color:#00f0ff">3D</span></h1>
+                </div>
+
+                <nav class="main-nav">
+                    <button class="nav-link active" onclick="window.location.href='marketplace.html'">Marketplace</button>
+                    <button class="nav-link" onclick="window.location.href='configurator.html'">Configurator</button>
+                    <button class="nav-link" id="nav-checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+                    <button class="nav-link" onclick="window.location.href='support.html'">Support</button>
+                </nav>
+
+                <div class="header-right-actions">
+                    <div class="search-container">
+                        <input type="text" id="market-search" placeholder="Search components..." onkeyup="filterMarket()">
+                    </div>
+                    <button class="cart-toggle-btn" onclick="toggleSidebar('right-cart')">
+                        🛒 Cart (<span id="cart-count">0</span>)
+                    </button>
+                    
+                    <div class="user-profile-container">
+                        <div class="user-avatar" id="user-initial">U</div>
+                        <span class="username" id="display-username">User</span>
+                        <button class="logout-header-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="market-layout">
+            <aside class="market-sidebar" id="left-sidebar">
+                <div class="sidebar-header">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <button class="close-sidebar-btn" onclick="toggleSidebar('left-sidebar')">✕</button>
+                </div>
+                
+                <div class="category-group">
+                    <button class="collapsible">Drone Chassis</button>
+                    <div class="content">
+                        <ul><li><a href="#chassis">Frames & Kits</a></li></ul>
+                    </div>
+                </div>
+                
+                <div class="category-group">
+                    <button class="collapsible">Propulsion</button>
+                    <div class="content">
+                        <ul><li><a href="#props">Props & ESCs</a></li></ul>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <button class="collapsible">Electronics</button>
+                    <div class="content">
+                        <ul><li><a href="#electronics">Flight Controllers</a></li></ul>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <button class="collapsible">Power</button>
+                    <div class="content">
+                        <ul><li><a href="#power">Batteries & LiPos</a></li></ul>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <button class="collapsible">Imaging</button>
+                    <div class="content">
+                        <ul><li><a href="#imaging">Cameras & Gimbals</a></li></ul>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="market-container">
+                <section class="category-section" id="chassis">
+                    <h2 class="category-title">Drone Chassis</h2>
+                    <div class="market-grid">
+                        <div class="item"><h3>GK-V3 10"/13" FPV</h3><p class="price">₱8,500</p><button class="buy-btn" onclick="addToCart('GK-V3 Frame', 8500)">Add to Cart</button></div>
+                        <div class="item"><h3>QWinOut Mini 3"</h3><p class="price">₱1,200</p><button class="buy-btn" onclick="addToCart('QWinOut Mini', 1200)">Add to Cart</button></div>
+                        <div class="item"><h3>RC 5" 225mm Carbon</h3><p class="price">₱2,100</p><button class="buy-btn" onclick="addToCart('RC 5 Frame', 2100)">Add to Cart</button></div>
+                        <div class="item"><h3>FPVDrone S550</h3><p class="price">₱4,500</p><button class="buy-btn" onclick="addToCart('S550 Hexacopter', 4500)">Add to Cart</button></div>
+                        <div class="item"><h3>Holybro Pixhawk 6C</h3><p class="price">₱12,000</p><button class="buy-btn" onclick="addToCart('Pixhawk 6C Frame', 12000)">Add to Cart</button></div>
+                        <div class="item"><h3>TrueX XL9 V2 9"</h3><p class="price">₱3,800</p><button class="buy-btn" onclick="addToCart('TrueX XL9', 3800)">Add to Cart</button></div>
+                    </div>
+                </section>
+
+                <section class="category-section" id="props">
+                    <h2 class="category-title">Propellers & ESCs</h2>
+                    <div class="market-grid">
+                        <div class="item"><h3>Dalprop T5045C 5"</h3><p class="price">₱450</p><button class="buy-btn" onclick="addToCart('Dalprop 5', 450)">Add to Cart</button></div>
+                        <div class="item"><h3>TMOTOR MS Series</h3><p class="price">₱950</p><button class="buy-btn" onclick="addToCart('TMOTOR Props', 950)">Add to Cart</button></div>
+                        <div class="item"><h3>DJI Mini 5 Pro Props</h3><p class="price">₱800</p><button class="buy-btn" onclick="addToCart('DJI Mini Props', 800)">Add to Cart</button></div>
+                        <div class="item"><h3>DJI Air 2S Low-Noise</h3><p class="price">₱1,100</p><button class="buy-btn" onclick="addToCart('Air 2S Props', 1100)">Add to Cart</button></div>
+                        <div class="item"><h3>XXD HW30A 30A ESC</h3><p class="price">₱650</p><button class="buy-btn" onclick="addToCart('XXD 30A ESC', 650)">Add to Cart</button></div>
+                        <div class="item"><h3>SpeedyBee 35A Stack</h3><p class="price">₱4,200</p><button class="buy-btn" onclick="addToCart('SpeedyBee Stack', 4200)">Add to Cart</button></div>
+                    </div>
+                </section>
+
+                <section class="category-section" id="electronics">
+                    <h2 class="category-title">Electronics</h2>
+                    <div class="market-grid">
+                        <div class="item"><h3>F4V3S Betaflight</h3><p class="price">₱1,850</p><button class="buy-btn" onclick="addToCart('F4V3S FC', 1850)">Add to Cart</button></div>
+                        <div class="item"><h3>SpeedyBee F405 Mini</h3><p class="price">₱3,200</p><button class="buy-btn" onclick="addToCart('F405 Mini Stack', 3200)">Add to Cart</button></div>
+                        <div class="item"><h3>Pixhawk 6C Aluminum</h3><p class="price">₱15,500</p><button class="buy-btn" onclick="addToCart('Pixhawk 6C Alum', 15500)">Add to Cart</button></div>
+                    </div>
+                </section>
+
+                <section class="category-section" id="power">
+                    <h2 class="category-title">Power</h2>
+                    <div class="market-grid">
+                        <div class="item"><h3>CNHL SpeedyPizza 6S</h3><p class="price">₱1,950</p><button class="buy-btn" onclick="addToCart('6S 1200mAh LiPo', 1950)">Add to Cart</button></div>
+                        <div class="item"><h3>Ovonic 4S 2200mAh</h3><p class="price">₱1,450</p><button class="buy-btn" onclick="addToCart('4S 2200mAh LiPo', 1450)">Add to Cart</button></div>
+                        <div class="item"><h3>450mAh 1S (4-Pack)</h3><p class="price">₱1,100</p><button class="buy-btn" onclick="addToCart('1S 450mAh Pack', 1100)">Add to Cart</button></div>
+                    </div>
+                </section>
+
+                <section class="category-section" id="imaging">
+                    <h2 class="category-title">Imaging</h2>
+                    <div class="market-grid">
+                        <div class="item"><h3>Phoenix 2 Pro FPV</h3><p class="price">₱1,650</p><button class="buy-btn" onclick="addToCart('Phoenix 2 Pro', 1650)">Add to Cart</button></div>
+                        <div class="item"><h3>Thermal Imaging Mod</h3><p class="price">₱12,000</p><button class="buy-btn" onclick="addToCart('Thermal Module', 12000)">Add to Cart</button></div>
+                        <div class="item"><h3>DJI Zenmuse XT2</h3><p class="price">₱245,000</p><button class="buy-btn" onclick="addToCart('Zenmuse XT2', 245000)">Add to Cart</button></div>
+                        <div class="item"><h3>Runcam Night Eagle 3</h3><p class="price">₱2,800</p><button class="buy-btn" onclick="addToCart('Night Eagle 3', 2800)">Add to Cart</button></div>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="cart-panel" id="right-cart">
+                <div class="sidebar-header">
+                    <h3 class="sidebar-title">Build Cart</h3>
+                    <button class="close-sidebar-btn" onclick="toggleSidebar('right-cart')">✕</button>
+                </div>
+                <div id="cart-items"><p class="empty-msg">Empty.</p></div>
+                <div class="cart-footer">
+                    <div class="total-row"><span>Total:</span><span id="cart-total">₱0</span></div>
+                    <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script>
+        // --- GLOBAL STATE & LOAD ---
+        let cart = JSON.parse(localStorage.getItem('finalCart')) || [];
+
+        window.addEventListener('load', function() {
+            const savedName = localStorage.getItem('savedUsername');
+            const nameDisplay = document.getElementById('display-username');
+            const initialDisplay = document.getElementById('user-initial');
+
+            if (savedName && savedName.trim() !== "") {
+                nameDisplay.innerText = savedName;
+                initialDisplay.innerText = savedName.charAt(0).toUpperCase();
+            } else {
+                nameDisplay.innerText = "Guest";
+                initialDisplay.innerText = "G";
+            }
+            updateCartUI(); 
+        });
+
+        // --- UI TOGGLES ---
+        function toggleSidebar(id) {
+            const sidebar = document.getElementById(id);
+            if (sidebar) sidebar.classList.toggle('collapsed');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibles = document.querySelectorAll('.collapsible');
+            collapsibles.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                });
+            });
+        });
+
+        // --- CART LOGIC ---
+        function addToCart(name, price) {
+            cart.push({name, price});
+            localStorage.setItem('finalCart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('finalCart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const countEl = document.getElementById('cart-count');
+            
+            if (!list) return;
+            list.innerHTML = ""; 
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                list.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <span>${item.name}</span>
+                            <small>₱${item.price.toLocaleString()}</small>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">✕</button>
+                    </div>`;
+            });
+
+            if(cart.length === 0) list.innerHTML = '<p class="empty-msg">Empty.</p>';
+            totalEl.innerText = `₱${total.toLocaleString()}`;
+            countEl.innerText = cart.length;
+        }
+
+        // --- NAVIGATION ---
+        function logout() {
+            localStorage.removeItem('savedUsername');
+            localStorage.removeItem('finalCart');
+            window.location.href = 'index.html';
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            window.location.href = 'checkout.html';
+        }
+
+        function filterMarket() {
+            let input = document.getElementById('market-search').value.toLowerCase();
+            let items = document.getElementsByClassName('item');
+            for (let i = 0; i < items.length; i++) {
+                let name = items[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                items[i].style.display = name.includes(input) ? "block" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* --- GLOBAL STYLES --- */
+body, html {
+    margin: 0; padding: 0;
+    background-color: #050505;
+    color: white;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+#wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* --- HEADER --- */
+header { 
+    background: #080808; 
+    border-bottom: 2px solid #00f0ff;
+    padding: 10px 0;
+}
+.nav-content-main { 
+    display: flex; align-items: center; justify-content: space-between; 
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+}
+.logo { font-size: 1.5rem; margin: 0; font-weight: bold; }
+.main-nav { display: flex; gap: 15px; }
+.nav-link { 
+    background: none; border: none; color: #888; cursor: pointer; 
+    font-size: 0.8rem; font-weight: bold; text-transform: uppercase;
+}
+.nav-link.active { color: #00f0ff; }
+
+.user-profile { display: flex; align-items: center; gap: 10px; color: #eee; }
+.avatar { 
+    width: 32px; height: 32px; background: #00f0ff; color: #000; 
+    border-radius: 50%; display: flex; align-items: center; 
+    justify-content: center; font-weight: bold; font-size: 0.8rem;
+}
+#logout-btn { 
+    background: #ff3333; border: none; color: white; 
+    padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.7rem;
+}
+
+/* --- CHECKOUT LAYOUT --- */
+.checkout-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.checkout-box {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.category-title {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    border-left: 3px solid #00f0ff;
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- FORM ELEMENTS --- */
+.input-group { margin-bottom: 20px; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+label {
+    display: block; color: #666; font-size: 0.75rem;
+    margin-bottom: 8px; text-transform: uppercase; font-weight: bold;
+}
+
+input {
+    width: 100%; background: #151515; border: 1px solid #222;
+    border-radius: 6px; padding: 12px; color: #fff;
+    box-sizing: border-box; transition: 0.3s;
+}
+
+input:focus { outline: none; border-color: #00f0ff; background: #1a1a1a; }
+
+/* --- PAYMENT OPTIONS --- */
+.payment-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pay-option {
+    padding: 15px 5px; border: 1px solid #222; border-radius: 8px;
+    text-align: center; cursor: pointer; transition: 0.3s; color: #555;
+}
+.pay-option strong { display: block; font-size: 0.8rem; }
+.pay-option small { font-size: 0.6rem; opacity: 0.7; }
+.pay-option:hover, .pay-option.active { border-color: #00f0ff; color: #fff; background: rgba(0, 240, 255, 0.05); }
+
+/* --- SUMMARY SIDEBAR --- */
+.summary-sidebar { height: fit-content; position: sticky; top: 20px; }
+.summary-header { color: #555; text-transform: uppercase; font-size: 0.8rem; margin-top: 0; margin-bottom: 20px; }
+.summary-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #1a1a1a; font-size: 0.9rem; }
+.item-price { color: #00f0ff; }
+
+.total-section { margin-top: 25px; padding-top: 20px; border-top: 2px solid #222; }
+.total-row { display: flex; justify-content: space-between; align-items: center; }
+.total-label { color: #888; font-weight: bold; }
+.total-display { font-size: 1.8rem; color: #00f0ff; font-weight: bold; }
+
+.buy-btn {
+    width: 100%; background: #00f0ff; color: #000; border: none;
+    padding: 16px; border-radius: 8px; font-weight: bold;
+    text-transform: uppercase; cursor: pointer; margin-top: 20px; transition: 0.3s;
+}
+.buy-btn:hover { background: #fff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+.security-note { color: #333; font-size: 0.65rem; text-align: center; margin-top: 15px; text-transform: uppercase; }
+
+/* Responsive */
+@media (max-width: 850px) {
+    .checkout-container { grid-template-columns: 1fr; }
+    .summary-sidebar { position: static; }
+}
+
+/* Container for the profile and logout button */
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between profile and logout button */
+}
+
+/* Container for just the Avatar and Name */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The Fixed Logout Button */
+#logout-btn {
+    background: #ff4b2b; /* A professional red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    height: fit-content; /* Prevents it from stretching */
+    line-height: 1;
+}
+
+#logout-btn:hover {
+    background: #e63917; /* Darker red on hover */
+}
+

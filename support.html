@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyForge | Support</title>
+    <link rel="stylesheet" href="support.css">
+    <link rel="icon" type="image/x-icon" href="tau.png">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="nav-content-main">
+                <div class="nav-group-left">
+                    <a href="marketplace.html" class="logo">SkyForge<span style="color:#00f0ff">3D</span></a>
+                </div>
+
+                <nav class="main-nav">
+                    <button class="nav-link" onclick="window.location.href='marketplace.html'">Marketplace</button>
+                    <button class="nav-link" onclick="window.location.href='configurator.html'">Configurator</button>
+                    <button class="nav-link" id="nav-checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+                    <button class="nav-link active" onclick="window.location.href='support.html'">Support</button>
+                </nav>
+
+                <div class="header-right-actions">
+                    <div class="user-profile-container">
+                        <div class="user-avatar" id="user-initial">U</div>
+                        <span class="username" id="display-username">User</span>
+                        <button class="logout-header-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="market-layout">
+            <div class="market-container">
+                <section class="category-section">
+                    <h2 class="category-title">SkyForge Support Center</h2>
+                    
+                    <div class="support-grid">
+                        <div class="support-card">
+                            <h3>Submit a Ticket</h3>
+                            <p style="color:#666; font-size:0.8rem; margin-bottom:15px;">Encountered an error or need a custom part?</p>
+                            
+                            <form action="mailto:support@skyforge3d.com" method="post" enctype="text/plain">
+                                <div class="input-group">
+                                    <label>Subject</label>
+                                    <input type="text" name="subject" placeholder="Technical Issue / Part Request" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Message</label>
+                                    <textarea name="body" placeholder="Describe your request" required style="height:100px; resize:none;"></textarea>
+                                </div>
+                                <button type="submit" class="buy-btn">SEND VIA EMAIL APP</button>
+                            </form>
+                        </div>
+
+                        <div class="support-card">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="category-group">
+                                <p style="color:#00f0ff; font-weight:bold; margin-top:10px;">Can I save my 3D build and come back later?</p>
+                                <p style="color:#888; font-size:0.85rem;">Currently, builds are saved locally in your browser storage.</p>
+                                
+                                <p style="color:#00f0ff; font-weight:bold; margin-top:20px;">What should I do if the 3D viewer isn't loading?</p>
+                                <p style="color:#888; font-size:0.85rem;">Ensure your browser supports WebGL and is updated. Try a hard refresh (Ctrl + F5).</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const savedName = localStorage.getItem('savedUsername');
+            const nameDisplay = document.getElementById('display-username');
+            const initialDisplay = document.getElementById('user-initial');
+
+            if (savedName) {
+                nameDisplay.innerText = savedName;
+                initialDisplay.innerText = savedName.charAt(0).toUpperCase();
+            }
+        };
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

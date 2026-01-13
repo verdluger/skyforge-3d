@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyForge | Configurator</title>
+    <link rel="stylesheet" href="configurator.css">
+    <link rel="icon" type="image/x-icon" href="tau.png">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="nav-content-main">
+                <div class="nav-group-left">
+                    <a href="marketplace.html" class="logo">SkyForge<span style="color:#00f0ff">3D</span></a>
+                </div>
+                <nav class="main-nav">
+                    <button class="nav-link" onclick="window.location.href='marketplace.html'">Marketplace</button>
+                    <button class="nav-link active" onclick="window.location.href='configurator.html'">Configurator</button>
+                    <button class="nav-link" onclick="window.location.href='checkout.html'">Checkout</button>
+                    <button class="nav-link" onclick="window.location.href='support.html'">Support</button>
+                </nav>
+                <div class="header-right-actions">
+                    <div class="user-profile-container">
+                        <div class="user-avatar" id="user-initial">M</div>
+                        <span class="username" id="display-username">Mr_YowTube</span>
+                        <button class="logout-header-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="config-layout">
+            <aside class="sidebar">
+                <h2 class="section-title">Construct_Unit</h2>
+                <div class="control-group">
+                    <label>Drone Chassis</label>
+                    <select id="drone-type">
+                        <option value="multi">Multi-Rotor (X-Frame)</option>
+                        <option value="fixed">Fixed Wing (Long Frame)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Camera System</label>
+                    <select id="camera-type">
+                        <option value="none">None</option>
+                        <option value="night">Night Vision</option>
+                        <option value="thermal">Thermal Imaging</option>
+                        <option value="normal">Standard Lens</option>
+                        <option value="pro">Pro (Gold Edition)</option>
+                    </select>
+                </div>
+                <button class="update-btn" id="generate-btn">UPDATE BUILD</button>
+            </aside>
+            <section class="viewport" id="viewer"></section>
+        </main>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script type="module" src="drone3d.js"></script>
+</body>
+</html>
