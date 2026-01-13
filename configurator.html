@@ -65,6 +65,17 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const savedUsername = localStorage.getItem('username'); 
+
+    if (savedUsername) {
+        const displayUser = document.getElementById('display-username');
+        displayUser.textContent = savedUsername;
+
+        const displayInitial = document.getElementById('user-initial');
+        displayInitial.textContent = savedUsername.charAt(0).toUpperCase();
+    }
+});
         function logout() {
             localStorage.clear();
             window.location.href = 'index.html';
@@ -72,4 +83,5 @@
     </script>
     <script type="module" src="drone3d.js"></script>
 </body>
+
 </html>
